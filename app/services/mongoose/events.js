@@ -195,7 +195,7 @@ const changeStatusEvents = async (req) => {
   const { id } = req.params;
   const { statusEvent } = req.body;
 
-  if (!["Draf", "Published"].includes(statusEvent)) {
+  if (!["Draft", "Published"].includes(statusEvent)) {
     throw new BadRequestError("Status harus Draft atau Published");
   }
 
