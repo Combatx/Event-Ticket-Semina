@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 
+const { testku } = require("./app/config");
+
 const app = express();
 
 // router
@@ -44,6 +46,10 @@ app.use(`${v1}/cms`, authCMSRouter);
 app.use(`${v1}/cms`, ordersRouter);
 app.use(`${v1}/cms`, paymentsRouter);
 app.use(`${v1}`, participantsRouter);
+
+app.get("/api/v1/testvariabel", (req, res) => {
+  res.send(testku);
+});
 
 app.use(notFoundMiddleware);
 app.use(handleErrorMiddleware);
