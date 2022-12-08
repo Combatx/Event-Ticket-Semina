@@ -7,5 +7,4 @@ module.exports = {
   jwtSecret: process.env.SECRET_KODE,
   gmail: process.env.EMAIL,
   password: process.env.PASSWORD,
-  testku: process.env.TESTKU,
 };

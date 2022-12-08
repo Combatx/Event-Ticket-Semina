@@ -47,10 +47,6 @@ app.use(`${v1}/cms`, ordersRouter);
 app.use(`${v1}/cms`, paymentsRouter);
 app.use(`${v1}`, participantsRouter);
 
-app.get("/api/v1/testvariabel", (req, res) => {
-  res.send(testku);
-});
-
 app.use(notFoundMiddleware);
 app.use(handleErrorMiddleware);
 module.exports = app;
