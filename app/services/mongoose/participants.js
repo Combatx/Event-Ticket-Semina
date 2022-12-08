@@ -1,15 +1,16 @@
 const Participant = require("../../api/v1/participants/model");
 const Events = require("../../api/v1/events/model");
 const Orders = require("../../api/v1/orders/model");
+const Payments = require("../../api/v1/payments/model");
 
 const {
   BadRequestError,
   NotFoundError,
   UnauthorizedError,
 } = require("../../errors");
-
-const { otpMail } = require("../email/index");
 const { createTokenParticipant, createJWT } = require("../../utils");
+
+const { otpMail } = require("../email");
 
 const signupParticipant = async (req) => {
   const { firstName, lastName, email, password, role } = req.body;
@@ -119,14 +120,11 @@ const getOneEvent = async (req) => {
 };
 
 const getAllOrders = async (req) => {
+  console.log(req.participant);
   const result = await Orders.find({ participant: req.participant.id });
   return result;
 };
 
-/**
- * Tugas Send email invoice
- * TODO: Ambil data email dari personal detail
- *  */
 const checkoutOrder = async (req) => {
   const { event, personalDetail, payment, tickets } = req.body;
 
